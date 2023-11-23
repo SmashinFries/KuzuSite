@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { Pressable, PressableProps, useWindowDimensions } from 'react-native';
 import { MD3DarkTheme, PaperProvider, Text } from 'react-native-paper';
 import { Logo2SVG } from '../components/svg';
-import { HeaderButton, NavHeader } from '../components/headers';
+import { HeaderButton, LogoButton, NavHeader } from '../components/headers';
 
 export {
     // Catch any errors thrown by the Layout component.
@@ -45,7 +45,7 @@ const RootLayout = () => {
 
 const TabButton = (props: PressableProps & { label: string }) => {
     return (
-        <HeaderButton path='test' title={props.label} containerStyle={props.style} buttonStyle={props} textSize={14} />
+        <HeaderButton onPress={props.onPress} title={props.label} containerStyle={props.style} buttonStyle={props} textSize={'0.9rem'} />
         // <Pressable {...props} style={[props.style, { justifyContent: 'center', alignItems:'center' }]}>
         //     <Text style={{ fontFamily: 'Nabla' }}>{props.label}</Text>
         // </Pressable>
@@ -72,7 +72,8 @@ const RootMobileLayout = () => {
                     headerShown: false,
                     title: '',
                     tabBarItemStyle: { width: 300 },
-                    tabBarIcon: (props) => <Logo2SVG width={98} />,
+                    // tabBarIcon: (props) => <Logo2SVG width={'100'} />,
+                    tabBarButton: (props) => <LogoButton size={100} />,
                 }}
             />
             <Tabs.Screen
@@ -93,7 +94,7 @@ const RootLayoutNav = () => {
     const { width, height } = useWindowDimensions();
 
     return (
-        <PaperProvider theme={MD3DarkTheme}>
+        <PaperProvider theme={{...MD3DarkTheme}}>
             <ThemeProvider value={DarkTheme}>
                 {width < height ? (
                     <RootMobileLayout />

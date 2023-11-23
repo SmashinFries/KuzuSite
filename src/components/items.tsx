@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { ProjectApp, ProjectPlatforms } from '../types';
-import { Button, Card, Chip, Paragraph, Text, useTheme } from 'react-native-paper';
+import { Button, Card, Chip, MD3LightTheme, Paragraph, Text, useTheme } from 'react-native-paper';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { ReactNode } from 'react';
 
@@ -12,7 +12,7 @@ export const Section = ({ children, title }: { title: string; children: ReactNod
                 style={{
                     marginTop: 30,
                     paddingLeft: 20,
-                    alignSelf: width > height ? 'flex-start' : 'auto',
+                    alignSelf: width > height ? 'center' : 'flex-start',
                 }}
                 variant="headlineMedium"
             >
@@ -71,18 +71,19 @@ export const AppCard = (info: ProjectApp) => {
 
     return (
         <View style={[{ flex: 1, margin: 15 }]}>
-            <Pressable>
                 <Card mode="contained" onPress={() => null} style={[animatedStyle]}>
                     {/* {info.coverImg && <Card.Cover source={typeof info.coverImg === 'string' ? {uri:info.coverImg} : info.coverImg} />} */}
                     <Card.Title
                         title={<AppCardTitle title={info.name} platforms={info.platforms} />}
-                        subtitle={info.platforms && info.platforms[0]}
+                        subtitle={info.status}
                     />
                     <Card.Content>
                         <Paragraph>{info.blurb}</Paragraph>
                     </Card.Content>
+                    <Card.Actions>
+                        {info.url.length > 0 && <Button onPress={() => window.open(info.url, '_blank')}>View</Button>}
+                    </Card.Actions>
                 </Card>
-            </Pressable>
         </View>
     );
 };

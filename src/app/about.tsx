@@ -9,7 +9,7 @@ const AboutPage = () => {
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal:10 }}>
-            <Paragraph>I make React Native apps. I also occasionally work with python.</Paragraph>
+            <Paragraph style={{textAlign:'center'}}>I make React Native apps. I also occasionally work with python.</Paragraph>
             <View
                 style={{ marginVertical: 30, flexDirection: 'row', justifyContent: 'space-evenly' }}
             >

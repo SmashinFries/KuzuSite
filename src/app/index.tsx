@@ -3,13 +3,18 @@ import { AppCard, Section } from '../components/items';
 import { Projects } from '../types';
 import { View, useWindowDimensions } from 'react-native';
 import { Button, Text } from 'react-native-paper';
+import { Image } from 'expo-image';
 
 const RootPage = () => {
     const { width, height } = useWindowDimensions();
     return (
         <View style={{ flex: 1 }}>
             {/* <Text>Root Page</Text> */}
-            <Section title="Apps">
+            <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
+                <Text variant='titleMedium'>Site is being worked on!</Text>
+                <Image source={require('../../assets/images/work.png')} style={{width:300, height:300}} resizeMode='contain' />
+            </View>
+            {/* <Section title="Apps">
                 <View
                     style={{
                         flexWrap: 'wrap',
@@ -36,7 +41,7 @@ const RootPage = () => {
                         <AppCard key={idx} {...item} />
                     ))}
                 </View>
-            </Section>
+            </Section> */}
         </View>
     );
 };
