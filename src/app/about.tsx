@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { GumroadIcon, FiverrIcon, ThreadsIcon } from '../components/svg';
+import { FiverrIcon, ThreadsIcon } from '../components/svg';
 import { Linking, View } from 'react-native';
 import { IconButton, Paragraph, Snackbar, Text, useTheme } from 'react-native-paper';
 
@@ -35,7 +35,7 @@ const AboutPage = () => {
                             size={32}
                             icon={(props) => (
                                 <ThreadsIcon
-                                    fillColor={'#FFF'}
+                                    fillcolor={'#FFF'}
                                     height={props.size}
                                     width={props.size}
                                 />
@@ -49,16 +49,10 @@ const AboutPage = () => {
                 <View style={{ marginHorizontal: 20, alignItems: 'center' }}>
                     <Text>View my work here</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                        {/* <IconButton icon='gumroad' /> */}
                         <IconButton
                             size={32}
                             onPress={() => window.open('https://github.com/SmashinFries', '_blank')}
                             icon="github"
-                        />
-                        <IconButton
-                            size={32}
-                            onPress={() => window.open('https://store.kuzulabz.com', '_blank')}
-                            icon={(props) => <GumroadIcon height={props.size} width={props.size} />}
                         />
                         {/* <IconButton size={32} icon={(props) => <FiverrIcon height={props.size} width={props.size} fillColor={props.color}/>} /> */}
                     </View>

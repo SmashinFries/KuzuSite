@@ -9,6 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Logo2SVG, LogoSVG } from './svg';
 import { router, usePathname } from 'expo-router';
+import { Image } from 'expo-image';
 
 export const LogoButton = ({size}:{size?:number}) => {
     const scale = useSharedValue(1);
@@ -16,7 +17,8 @@ export const LogoButton = ({size}:{size?:number}) => {
 
     const animatedStyle = useAnimatedStyle(() => {
         return {
-            transform: [{ scale: scale.value }],
+            // transform: [{ scale: scale.value }],
+            transform: `scale(${scale.value})`
         };
     });
 
@@ -26,20 +28,21 @@ export const LogoButton = ({size}:{size?:number}) => {
         if (width > height) {
             return;
         } else {
-            console.log('pressed')
+            console.log('pressed');
             scale.value = withSequence(withSpring(1.1), withSpring(1));
         }
     };
 
     return (
-        <Animated.View style={[animatedStyle, {alignItems:'center', justifyContent:'center'}]}>
+        <Animated.View style={[animatedStyle, {flex:1, alignItems:'center', justifyContent:'center'}]}>
             <Pressable
                 onPress={handlePress}
                 onHoverIn={() => (scale.value = withSpring(1.1))}
                 onHoverOut={() => (scale.value = withSpring(1))}
             >
                 {/* <LogoSVG width={'100%'} /> */}
-                <Logo2SVG width={size ?? '100%'}  />
+                {/* <Logo2SVG width={size ?? '100%'}  /> */}
+                <Image source={require('../../assets/images/banner.png')} style={{ width: size ?? 200, height: 100 }} contentFit='contain' />
             </Pressable>
         </Animated.View>
     );
@@ -60,7 +63,6 @@ export const HeaderButton = ({ title, path, onPress, buttonStyle, containerStyle
 
     const { width, height } = useWindowDimensions();
 
-    // @ts-ignore WEB ONLY
     const animatedShadow = useAnimatedStyle(() => {
         return {
             textShadow: `${
@@ -95,7 +97,7 @@ export const HeaderButton = ({ title, path, onPress, buttonStyle, containerStyle
         if (onPress) {
             onPress();
         } else if (path) {
-            router.replace(path)
+            router.replace(path);
         }
 
         if (width > height) {
@@ -120,11 +122,6 @@ export const HeaderButton = ({ title, path, onPress, buttonStyle, containerStyle
                         {
                             fontSize: textSize ?? '1.5rem',
                             color: 'white',
-                            fontFamily: 'Nabla',
-                            // textShadowOffset: {
-                            //     width: 0,
-                            //     height: 10,
-                            // },
                         },
                         animatedShadow,
                     ]}

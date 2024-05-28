@@ -6,19 +6,16 @@ import { Pressable, PressableProps, useWindowDimensions } from 'react-native';
 import { MD3DarkTheme, PaperProvider, Text } from 'react-native-paper';
 import { Logo2SVG } from '../components/svg';
 import { HeaderButton, LogoButton, NavHeader } from '../components/headers';
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 export {
     // Catch any errors thrown by the Layout component.
     ErrorBoundary,
 } from 'expo-router';
 
-// export const unstable_settings = {
-//   // Ensure that reloading on `/modal` keeps a back button present.
-//   initialRouteName: 'index',
-// };
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
+const queryClient = new QueryClient();
 
 const RootLayout = () => {
     const [loaded, error] = useFonts({
@@ -40,7 +37,7 @@ const RootLayout = () => {
         return null;
     }
 
-    return <RootLayoutNav />;
+    return <QueryClientProvider client={queryClient}><RootLayoutNav /></QueryClientProvider>;
 };
 
 const TabButton = (props: PressableProps & { label: string }) => {
@@ -72,8 +69,7 @@ const RootMobileLayout = () => {
                     headerShown: false,
                     title: '',
                     tabBarItemStyle: { width: 300 },
-                    // tabBarIcon: (props) => <Logo2SVG width={'100'} />,
-                    tabBarButton: (props) => <LogoButton size={100} />,
+                    tabBarIcon: (props) => <LogoButton size={80} />,
                 }}
             />
             <Tabs.Screen

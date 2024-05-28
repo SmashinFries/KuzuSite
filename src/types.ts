@@ -13,4 +13,5 @@ export type ProjectApp = {
 export type Projects = {
     apps: ProjectApp[];
     python: ProjectApp[];
+    games: ProjectApp[];
 };
