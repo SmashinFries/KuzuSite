@@ -5,18 +5,84 @@ import { ScrollView, View, useWindowDimensions } from 'react-native';
 import { Button, Text } from 'react-native-paper';
 import { Image } from 'expo-image';
 import { fetchGithubProjects } from '@/api/queries';
+import {
+	ComicButton,
+	LargeBoxContainer,
+	ProjectContainer,
+	SectionHeader,
+	BubbleContainer,
+} from '@/components/containers';
+import { useMemo } from 'react';
+import { openBrowserAsync } from 'expo-web-browser';
 
 const RootPage = () => {
-    const { width, height } = useWindowDimensions();
+	const { width, height } = useWindowDimensions();
+	const isWidescreen = useMemo(() => width > height, [width, height]);
 
-    return (
-        <ScrollView style={{ flex: 1 }}>
-            {/* <Text>Root Page</Text> */}
-            {/* <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
-                <Text variant='titleMedium'>Site is being worked on!</Text>
-                <Image source={require('../../assets/images/work.png')} style={{width:300, height:300}} resizeMode='contain' />
-            </View> */}
-            <Section title="Apps">
+	const onIconPress = (url: string) => {
+		openBrowserAsync(url, { windowFeatures: { target: '_blank', popup: false } });
+	};
+
+	return (
+		<ScrollView
+			style={{ flex: 1, backgroundColor: '#FFF' }}
+			contentContainerStyle={{
+				width: isWidescreen ? '50%' : '95%',
+				alignSelf: 'center',
+				paddingVertical: 15,
+			}}
+		>
+			<SectionHeader title="Mobile Apps" />
+			<View style={{ alignItems: 'center' }}>
+				{projects.apps
+					.filter((val) => val.featured === true)
+					.map((item, idx) => (
+						<ProjectContainer
+							key={idx}
+							type={'wide'}
+							blurb={item.blurb}
+							title={item.name}
+							imageUrl={item.coverImg}
+							buttons={[
+								{
+									icon: 'github',
+									onPress: item.githubLink
+										? () => onIconPress(item.githubLink ?? '')
+										: undefined,
+								},
+								{
+									icon: 'earth',
+									onPress: item.url ? () => onIconPress(item.url) : undefined,
+								},
+							]}
+						/>
+					))}
+				<View style={{ flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
+					{projects.apps
+						.filter((val) => val.featured !== true)
+						.map((item, idx) => (
+							<ProjectContainer
+								key={idx}
+								type={'tall'}
+								blurb={item.blurb}
+								title={item.name}
+								imageUrl={item.coverImg}
+								buttons={[
+									{
+										icon: 'github',
+										onPress: item.githubLink
+											? () => onIconPress(item.githubLink ?? '')
+											: undefined,
+									},
+									{
+										icon: 'earth',
+										onPress: item.url ? () => onIconPress(item.url) : undefined,
+									},
+								]}
+							/>
+						))}
+				</View>
+				{/* <Section title="Apps">
                 <View
                     style={{
                         flexWrap: 'wrap',
@@ -57,9 +123,36 @@ const RootPage = () => {
                         <AppCard key={idx} {...item} />
                     ))}
                 </View>
-            </Section>
-        </ScrollView>
-    );
+            </Section> */}
+			</View>
+			<SectionHeader title="Python" />
+			<View style={{ alignItems: 'center' }}>
+				{projects.python
+					.filter((val) => val.featured === true)
+					.map((item, idx) => (
+						<ProjectContainer
+							key={idx}
+							type={'wide'}
+							blurb={item.blurb}
+							title={item.name}
+							imageUrl={item.coverImg}
+							buttons={[
+								{
+									icon: 'github',
+									onPress: item.githubLink
+										? () => onIconPress(item.githubLink ?? '')
+										: undefined,
+								},
+								{
+									icon: 'earth',
+									onPress: item.url ? () => onIconPress(item.url) : undefined,
+								},
+							]}
+						/>
+					))}
+			</View>
+		</ScrollView>
+	);
 };
 
 export default RootPage;
