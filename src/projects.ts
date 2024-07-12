@@ -13,12 +13,32 @@ export const projects: Projects = {
 			featured: true,
 		},
 		{
+			name: 'VNBrowser',
+			url: '',
+			githubLink: 'https://github.com/SmashinFries/VNBrowser',
+			platforms: ['Android'],
+			status: 'Releasing',
+			blurb: 'A mobile app for VNDB.',
+			coverImg:
+				'https://github.com/SmashinFries/VNBrowser/blob/master/assets/adaptive-icon.png?raw=true',
+		},
+		{
+			name: 'ArtGimon',
+			url: '',
+			githubLink: 'https://github.com/SmashinFries/ArtGimon',
+			platforms: ['Android', 'Windows'],
+			status: 'Releasing',
+			blurb: 'A game about questioning AI art and drawn art.',
+			coverImg:
+				'https://github.com/SmashinFries/ArtGimon/blob/main/assets/adaptive-icon.png?raw=true',
+		},
+		{
 			name: 'WaifuTagger',
 			url: '',
 			githubLink: 'https://github.com/KuzuLabz/WaifuTagger',
 			platforms: ['Android'],
 			status: 'Completed',
-			blurb: 'A utility app that tags your images with booru tags',
+			blurb: 'A utility app that tags your images with booru tags.',
 			coverImg:
 				'https://github.com/KuzuLabz/WaifuTagger/blob/master/assets/adaptive-icon.png?raw=true',
 		},
@@ -28,26 +48,27 @@ export const projects: Projects = {
 			githubLink: 'https://github.com/SmashinFries/CivitAI-RN',
 			platforms: ['Android'],
 			status: 'Releasing',
-			blurb: 'A React Native app for CivitAI',
+			blurb: 'A React Native app for CivitAI.',
 			coverImg:
 				'https://github.com/SmashinFries/CivitAI-RN/blob/master/assets/adaptive-icon.png?raw=true',
 		},
+
 		{
-			name: 'VNBrowser',
+			name: 'KuzuChat',
 			url: '',
 			platforms: ['Android'],
 			status: 'Developing',
-			blurb: 'A mobile app for VNDB -\nComing soon!',
+			blurb: 'A React Native app for local LLM inference.\nComing Soon!',
 			coverImg: '',
 		},
-		// {
-		// 	name: 'KuzuChat',
-		// 	url: '',
-		// 	platforms: ['Android'],
-		// 	status: 'Developing',
-		// 	blurb: 'A React Native app for local LLM inference',
-		// 	coverImg: '',
-		// },
+		{
+			name: 'KuzuDrive',
+			url: '',
+			platforms: ['Android', 'Web', 'Windows', 'MacOS'],
+			status: 'Developing',
+			blurb: 'A cross-platform client for FileBrowser.\nComing Soon!',
+			coverImg: '',
+		},
 	],
 	python: [
 		{
