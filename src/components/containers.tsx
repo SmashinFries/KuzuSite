@@ -151,12 +151,30 @@ export const ProjectContainer = ({
 		case 'wide':
 			return (
 				<LargeBoxContainer style={{ alignItems: 'center', width: '100%' }}>
-					{imageUrl.length > 0 && (
+					{imageUrl.length > 0 ? (
 						<Image
 							source={{ uri: imageUrl }}
 							style={{ width: '95%', height: 200, marginVertical: 10 }}
 							contentFit="contain"
 						/>
+					) : (
+						<View
+							style={{
+								width: '95%',
+								height: 200,
+								marginVertical: 10,
+								justifyContent: 'center',
+							}}
+						>
+							<AnimeAceText
+								variant="displayLarge"
+								style={{
+									textAlign: 'center',
+								}}
+							>
+								{title}
+							</AnimeAceText>
+						</View>
 					)}
 					<BubbleContainer height={100} width={'85%'} text={blurb} />
 					<View
@@ -225,7 +243,9 @@ export const ProjectContainer = ({
 								{title}
 							</Text> */}
 						</View>
-					) : null}
+					) : (
+						<View style={{ height: '25%', width: '100%' }} />
+					)}
 					<BubbleContainer height={'30%'} width={'90%'} text={blurb} type="tall" />
 					<View
 						style={{

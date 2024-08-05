@@ -23,14 +23,13 @@ export const projects: Projects = {
 				'https://github.com/SmashinFries/VNBrowser/blob/master/assets/adaptive-icon.png?raw=true',
 		},
 		{
-			name: 'ArtGimon',
+			name: 'AniThemes',
 			url: '',
-			githubLink: 'https://github.com/SmashinFries/ArtGimon',
-			platforms: ['Android', 'Windows'],
+			platforms: ['Android', 'Windows', 'MacOS', 'Linux'],
 			status: 'Releasing',
-			blurb: 'A game about questioning AI art and drawn art.',
-			coverImg:
-				'https://github.com/SmashinFries/ArtGimon/blob/main/assets/adaptive-icon.png?raw=true',
+			blurb: 'A cross-platform anime music app!',
+			coverImg: '',
+			githubLink: 'https://github.com/SmashinFries/AnimeThemesMobile',
 		},
 		{
 			name: 'WaifuTagger',
@@ -42,6 +41,17 @@ export const projects: Projects = {
 			coverImg:
 				'https://github.com/KuzuLabz/WaifuTagger/blob/master/assets/adaptive-icon.png?raw=true',
 		},
+		{
+			name: 'ArtGimon',
+			url: '',
+			githubLink: 'https://github.com/SmashinFries/ArtGimon',
+			platforms: ['Android', 'Windows'],
+			status: 'Releasing',
+			blurb: 'A game about questioning AI art and drawn art.',
+			coverImg:
+				'https://github.com/SmashinFries/ArtGimon/blob/main/assets/adaptive-icon.png?raw=true',
+		},
+
 		{
 			name: 'CivitAI-RN',
 			url: '',
@@ -58,15 +68,7 @@ export const projects: Projects = {
 			url: '',
 			platforms: ['Android'],
 			status: 'Developing',
-			blurb: 'A React Native app for local LLM inference.\nComing Soon!',
-			coverImg: '',
-		},
-		{
-			name: 'KuzuDrive',
-			url: '',
-			platforms: ['Android', 'Web', 'Windows', 'MacOS'],
-			status: 'Developing',
-			blurb: 'A cross-platform client for FileBrowser.\nComing Soon!',
+			blurb: 'Chat with waifus on-device.\nComing Soon!',
 			coverImg: '',
 		},
 	],

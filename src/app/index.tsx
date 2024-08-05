@@ -2,7 +2,7 @@ import { projects } from '../projects';
 import { AppCard, Section } from '../components/items';
 import { Projects } from '../types';
 import { ScrollView, View, useWindowDimensions } from 'react-native';
-import { Button, Text } from 'react-native-paper';
+import { Button, Text, useTheme } from 'react-native-paper';
 import { Image } from 'expo-image';
 import { fetchGithubProjects } from '@/api/queries';
 import {
@@ -18,6 +18,7 @@ import { openBrowserAsync } from 'expo-web-browser';
 const RootPage = () => {
 	const { width, height } = useWindowDimensions();
 	const isWidescreen = useMemo(() => width > height, [width, height]);
+	const { colors } = useTheme();
 
 	const onIconPress = (url: string) => {
 		openBrowserAsync(url, { windowFeatures: { target: '_blank', popup: false } });

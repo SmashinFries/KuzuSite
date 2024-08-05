@@ -1,4 +1,4 @@
-export type ProjectPlatforms = 'Web' | 'Android' | 'iOS' | 'Windows' | 'MacOS';
+export type ProjectPlatforms = 'Web' | 'Android' | 'iOS' | 'Windows' | 'MacOS' | 'Linux';
 export type ProjectStatus = 'Developing' | 'Releasing' | 'Completed' | 'Maintained';
 
 export type ProjectApp = {

@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { FiverrIcon, ThreadsIcon } from '../components/svg';
-import { Linking, View } from 'react-native';
-import { IconButton, Paragraph, Snackbar, Text, useTheme } from 'react-native-paper';
+import { View } from 'react-native';
+import { IconButton, Paragraph, Snackbar } from 'react-native-paper';
 import { AnimeAceText } from '@/components/text';
 
 const AboutPage = () => {
-	const { colors } = useTheme();
 	const [visible, setVisible] = useState(false);
 
 	return (
@@ -15,6 +13,7 @@ const AboutPage = () => {
 				alignItems: 'center',
 				justifyContent: 'center',
 				paddingHorizontal: 10,
+				backgroundColor: '#FFF',
 			}}
 		>
 			<Paragraph style={{ textAlign: 'center', fontFamily: 'AnimeAce' }}>
