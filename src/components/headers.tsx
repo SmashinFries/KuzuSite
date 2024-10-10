@@ -10,6 +10,7 @@ import {
 	useWindowDimensions,
 } from 'react-native';
 import Animated, {
+	AnimatedStyle,
 	interpolateColor,
 	useAnimatedStyle,
 	useSharedValue,
@@ -52,7 +53,7 @@ export const LogoButton = ({ size }: { size?: number }) => {
 			>
 				<Image
 					source={require('../../assets/images/banner.png')}
-					style={{ width: size ?? 200, height: 100 }}
+					style={{ width: size ?? 120, height: 100 }}
 					contentFit="contain"
 				/>
 			</Pressable>
@@ -64,7 +65,7 @@ type HeaderButtonProps = {
 	title: string;
 	path?: string;
 	onPress?: ((event?: GestureResponderEvent) => void) | null | undefined;
-	containerStyle?: StyleProp<PressableProps['style']>;
+	containerStyle?: StyleProp<AnimatedStyle<StyleProp<ViewStyle>>>;
 	buttonStyle?: StyleProp<ViewStyle>;
 	textSize?: number | string;
 };
@@ -82,6 +83,7 @@ export const HeaderButton = ({
 
 	const { width, height } = useWindowDimensions();
 
+	// @ts-ignore
 	const animatedShadow = useAnimatedStyle<TextStyle>(() => {
 		return {
 			textShadow: `${
@@ -140,7 +142,7 @@ export const HeaderButton = ({
 						{
 							color: '#000',
 							fontFamily: 'AnimeAceBold',
-							fontSize: textSize ?? '1.5rem',
+							fontSize: textSize ?? '1.0rem',
 						},
 						animatedShadow,
 					]}
@@ -154,9 +156,9 @@ export const HeaderButton = ({
 
 export const NavHeader = () => {
 	return (
-		<View style={[styles.container]}>
+		<View style={[styles.container, { borderBottomWidth: 1, borderColor: '#000' }]}>
 			<View style={[styles.innerContainer]}>
-				<View style={{ flex: 1, width: '100%' }}>
+				<View style={{ flex: 1, width: '100%', justifyContent: 'center'}}>
 					<HeaderButton
 						title="Commissions"
 						path={'/commissions'}
@@ -167,7 +169,7 @@ export const NavHeader = () => {
 				<View style={{ flex: 1 }}>
 					<LogoButton />
 				</View>
-				<View style={{ flex: 1, width: '100%' }}>
+				<View style={{ flex: 1, width: '100%', justifyContent: 'center' }}>
 					<HeaderButton
 						title="About"
 						path={'/about'}
@@ -190,7 +192,6 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		alignItems: 'center',
 		justifyContent: 'center',
-		padding: 20,
 		backgroundColor: '#fff',
 	},
 	innerContainer: {
