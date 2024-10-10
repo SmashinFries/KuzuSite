@@ -44,7 +44,7 @@ const RootLayout = () => {
 	);
 };
 
-const TabButton = (props: PressableProps & { label: string }) => {
+const TabButton = (props: any & { label: string }) => {
 	return (
 		<HeaderButton
 			onPress={props.onPress as any}
