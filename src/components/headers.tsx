@@ -158,7 +158,7 @@ export const NavHeader = () => {
 	return (
 		<View style={[styles.container, { borderBottomWidth: 1, borderColor: '#000' }]}>
 			<View style={[styles.innerContainer]}>
-				<View style={{ flex: 1, width: '100%', justifyContent: 'center'}}>
+				<View style={{ flex: 1, width: '100%', justifyContent: 'center' }}>
 					<HeaderButton
 						title="Commissions"
 						path={'/commissions'}

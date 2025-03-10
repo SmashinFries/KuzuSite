@@ -37,9 +37,9 @@ const RootPage = () => {
 			<View style={{ alignItems: 'center' }}>
 				{projects.apps
 					.filter((val) => val.featured === true)
-					.map((item, idx) => (
+					.map((item) => (
 						<ProjectContainer
-							key={idx}
+							key={item.name}
 							type={'wide'}
 							blurb={item.blurb}
 							title={item.name}
@@ -63,7 +63,7 @@ const RootPage = () => {
 						.filter((val) => val.featured !== true)
 						.map((item, idx) => (
 							<ProjectContainer
-								key={idx}
+								key={item.name}
 								type={'tall'}
 								blurb={item.blurb}
 								title={item.name}
@@ -130,9 +130,9 @@ const RootPage = () => {
 			<View style={{ alignItems: 'center' }}>
 				{projects.python
 					.filter((val) => val.featured === true)
-					.map((item, idx) => (
+					.map((item) => (
 						<ProjectContainer
-							key={idx}
+							key={item.name}
 							type={'wide'}
 							blurb={item.blurb}
 							title={item.name}

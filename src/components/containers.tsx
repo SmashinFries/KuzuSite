@@ -26,7 +26,7 @@ type ComicButtonProps = {
 	icon: string;
 	width?: DimensionValue;
 	height?: DimensionValue;
-	onPress?: (() => void) | undefined;
+	onPress?: () => void;
 	containerStyle?: StyleProp<ViewStyle>;
 };
 export const ComicButton = ({ icon, onPress, width, height, containerStyle }: ComicButtonProps) => {
@@ -62,8 +62,6 @@ export const BubbleContainer = ({
 	containerStyle,
 	type = 'wide',
 }: BubbleContainerProps) => {
-	const windowSize = useWindowDimensions();
-	const isWidescreen = useMemo(() => windowSize.width > windowSize.height, [windowSize]);
 	return (
 		<View
 			style={[
@@ -207,11 +205,7 @@ export const ProjectContainer = ({
 						width: `${100 / (isWidescreen ? 3 : 2)}%`,
 					}}
 				>
-					<AnimeAceText
-						bold
-						variant={isWidescreen ? 'titleLarge' : 'titleLarge'}
-						style={{ paddingVertical: 5 }}
-					>
+					<AnimeAceText bold variant={'titleLarge'} style={{ paddingVertical: 5 }}>
 						{title}
 					</AnimeAceText>
 					{imageUrl ? (

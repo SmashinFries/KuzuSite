@@ -43,7 +43,7 @@ export const AppCard = (info: ProjectApp) => {
 	return (
 		<View style={[width > height ? { flex: 1 } : undefined, { margin: 15 }]}>
 			<Card mode="elevated" onPress={() => null}>
-				{info.coverImg && (
+				{!!info.coverImg && (
 					<Card.Cover
 						source={
 							typeof info.coverImg === 'string'

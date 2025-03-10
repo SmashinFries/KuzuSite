@@ -1,10 +1,10 @@
 import { DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack, Tabs } from 'expo-router';
 import { useEffect } from 'react';
-import { Pressable, PressableProps, useWindowDimensions } from 'react-native';
+import { StyleProp, useWindowDimensions, ViewStyle } from 'react-native';
 import { MD3LightTheme, PaperProvider, Text } from 'react-native-paper';
-import { Logo2SVG } from '../components/svg';
 import { HeaderButton, LogoButton, NavHeader } from '../components/headers';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 export {
@@ -44,13 +44,15 @@ const RootLayout = () => {
 	);
 };
 
-const TabButton = (props: any & { label: string }) => {
+const TabButton = (
+	props: BottomTabBarButtonProps & { buttonStyle?: StyleProp<ViewStyle>; label: string },
+) => {
 	return (
 		<HeaderButton
 			onPress={props.onPress as any}
 			title={props.label}
 			containerStyle={props.style}
-			buttonStyle={props}
+			buttonStyle={props.buttonStyle}
 			textSize={'0.9rem'}
 		/>
 		// <Pressable {...props} style={[props.style, { justifyContent: 'center', alignItems:'center' }]}>
